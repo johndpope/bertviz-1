@@ -72,6 +72,8 @@ def load_tf_weights_in_bert(model, tf_checkpoint_path):
     names = []
     arrays = []
     for name, shape in init_vars:
+        if not "bert" in name:
+            continue
         print("Loading TF weight {} with shape {}".format(name, shape))
         array = tf.train.load_variable(tf_path, name)
         names.append(name)
