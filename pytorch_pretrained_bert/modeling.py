@@ -97,6 +97,8 @@ def load_tf_weights_in_bert(model, tf_checkpoint_path):
             elif l[0] == 'output_weights':
                 pointer = getattr(pointer, 'weight')
             else:
+                if l[0] == 'bert':
+                    continue
                 pointer = getattr(pointer, l[0])
             if len(l) >= 2:
                 num = int(l[1])
